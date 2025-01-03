@@ -1,0 +1,7 @@
+tap "siderolabs/tap"
+tap "fluxcd/tap"
+
+brew "talosctl"
+brew "kubectl"
+brew "flux"
+brew "argo"
