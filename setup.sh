@@ -47,11 +47,18 @@ function get_linux_distro() {
 }
 
 function initialize_os_linux() {
-    :
+    # Install brew
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    # Install zsh
+    brew install zsh
+    sudo chsh -s $(which zsh)
 }
 
 function initialize_os_ubuntu() {
-    :
+    # Install brew's Ubuntu dependencies
+    sudo apt-get install build-essential
 }
 
 function initialize_dotfiles() {
@@ -62,11 +69,13 @@ function initialize_os_env() {
     local ostype
     ostype="$(get_os_type)"
 
+    echo "Detected OS type as ${ostype}"
     if [ "${ostype}" == "Linux" ]; then
         initialize_os_linux
 
         local linux_distro
         linux_distro="$(get_linux_distro)"
+        echo "Detected Linux distro as ${linux_distro}"
         if [ "${linux_distro}" == "Ubuntu" ]; then
             initialize_os_ubuntu
         else
@@ -77,8 +86,6 @@ function initialize_os_env() {
         echo "Invalid OS type: ${ostype}" >&2
         exit 1
     fi
-
-    
 }
 
 function main() {
