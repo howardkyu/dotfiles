@@ -1,7 +1,9 @@
 tap "siderolabs/tap"
 tap "fluxcd/tap"
+tap "int128/kubelogin"
 
 brew "talosctl"
 brew "kubectl"
 brew "flux"
 brew "argo"
+brew "kubelogin"
