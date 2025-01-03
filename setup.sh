@@ -53,8 +53,11 @@ function initialize_os_linux() {
 
     # Install zsh
     brew install zsh
-    echo "export SHELL=/home/linuxbrew/.linuxbrew/bin/zsh" >> "${HOME}/.profile"
+    echo "export SHELL=/home/linuxbrew/.linuxbrew/bin/zsh" > "${HOME}/.profile"
     echo '[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l' >> "${HOME}/.profile"
+
+    echo "export SHELL=/home/linuxbrew/.linuxbrew/bin/zsh" > "${HOME}/.bash_profile"
+    echo '[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l' >> "${HOME}/.bash_profile"
 }
 
 function initialize_os_ubuntu() {
