@@ -4,3 +4,5 @@
 	gpgsign = true
 [user]
 	signingkey = /home/coder/.ssh/git-commit-signing/coder
+	name = Howard Yu
+	email = kyuhoward@gmail.com
