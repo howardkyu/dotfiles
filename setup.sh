@@ -42,11 +42,15 @@ function get_os_type() {
     uname
 }
 
-function initialize_os_macos() {
-    :
+function get_linux_distro() {
+    lsb_release -a | grep "Distributor ID" | awk -F':\t*' '{print $2}'
 }
 
 function initialize_os_linux() {
+    :
+}
+
+function initialize_os_ubuntu() {
     :
 }
 
@@ -58,14 +62,23 @@ function initialize_os_env() {
     local ostype
     ostype="$(get_os_type)"
 
-    if [ "${ostype}" == "Darwin" ]; then
-        initialize_os_macos
-    elif [ "${ostype}" == "Linux" ]; then
+    if [ "${ostype}" == "Linux" ]; then
         initialize_os_linux
+
+        local linux_distro
+        linux_distro="$(get_linux_distro)"
+        if [ "${linux_distro}" == "Ubuntu" ]; then
+            initialize_os_ubuntu
+        else
+            echo "Invalid Linux distro: ${linux_distro}" >&2
+            exit 1
+        fi
     else
         echo "Invalid OS type: ${ostype}" >&2
         exit 1
     fi
+
+    
 }
 
 function main() {
