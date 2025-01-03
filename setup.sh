@@ -8,7 +8,6 @@ fi
 
 declare -r DOTFILES_REPO_URL="https://github.com/howardkyu/dotfiles"
 declare -r BRANCH_NAME="${BRANCH_NAME:-main}"
-declare -r DOTFILES_GITHUB_PAT="${DOTFILES_GITHUB_PAT:-}"
 
 function run_chezmoi() {
     # run `chezmoi init` to setup the source directory,
@@ -44,6 +43,9 @@ function initialize_os_linux() {
 
     # Install chezmoi
     brew install chezmoi
+    
+    # Change owner for linuxbrew directory
+    sudo chown ${USER}:${USER} /home/linuxbrew
 }
 
 function initialize_os_ubuntu() {
