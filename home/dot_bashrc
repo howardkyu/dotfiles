@@ -1,4 +1,10 @@
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#!/usr/bin/env bash
 
-export SHELL=/home/linuxbrew/.linuxbrew/bin/zsh
-[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
+if  [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] && \
+    [ -f "/home/linuxbrew/.linuxbrew/bin/zsh" ]; then
+
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    export SHELL=/home/linuxbrew/.linuxbrew/bin/zsh
+    [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
+fi
