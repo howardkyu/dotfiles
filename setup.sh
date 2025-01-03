@@ -45,7 +45,7 @@ function initialize_os_linux() {
     brew install chezmoi
     
     # Change owner for linuxbrew directory
-    sudo chown ${USER}:${USER} /home/linuxbrew
+    sudo chown -R ${USER}:${USER} /home/linuxbrew
 }
 
 function initialize_os_ubuntu() {
