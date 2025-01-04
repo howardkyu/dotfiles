@@ -8,3 +8,5 @@ if  [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] && \
     export SHELL=/home/linuxbrew/.linuxbrew/bin/zsh
     [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
 fi
+
+export PATH="$PATH:/home/coder/.local/bin"
